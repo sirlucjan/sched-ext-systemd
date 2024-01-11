@@ -1,0 +1,9 @@
+[Unit]
+Description=Open scx_nest
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/scx_nest
+
+[Install]
+WantedBy=multi-user.target

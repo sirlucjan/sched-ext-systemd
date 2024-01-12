@@ -1,5 +1,6 @@
 [Unit]
 Description=Start scx_userland
+ConditionPathExists=/sys/kernel/debug/sched/ext
 
 [Service]
 Type=oneshot

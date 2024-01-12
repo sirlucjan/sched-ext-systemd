@@ -1,0 +1,9 @@
+[Unit]
+Description=Start scx_pair
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/scx_pair
+
+[Install]
+WantedBy=multi-user.target

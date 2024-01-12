@@ -1,0 +1,9 @@
+[Unit]
+Description=Start scx_rustland
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/scx_rustland
+
+[Install]
+WantedBy=multi-user.target

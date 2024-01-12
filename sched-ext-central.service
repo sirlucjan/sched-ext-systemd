@@ -1,0 +1,9 @@
+[Unit]
+Description=Start scx_central
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/scx_central
+
+[Install]
+WantedBy=multi-user.target

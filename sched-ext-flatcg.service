@@ -1,0 +1,9 @@
+[Unit]
+Description=Start scx_flatcg
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/scx_flatcg
+
+[Install]
+WantedBy=multi-user.target

@@ -1,5 +1,5 @@
 [Unit]
-Description=Open scx_nest
+Description=Start scx_nest
 
 [Service]
 Type=oneshot

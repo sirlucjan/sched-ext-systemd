@@ -1,0 +1,9 @@
+[Unit]
+Description=Start scx_rusty
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/scx_rusty
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,9 @@
+[Unit]
+Description=Start scx_userland
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/scx_userland
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,9 @@
+[Unit]
+Description=Start scx_qmap
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/scx_qmap
+
+[Install]
+WantedBy=multi-user.target

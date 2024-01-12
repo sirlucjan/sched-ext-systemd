@@ -8,7 +8,7 @@ Please put systemd services in the following location:
 /etc/systemd/system/
 ```
 
-### Service start systemd scx_nest
+### Management of services
 ```
 systemctl enable sched-ext-*.service
 ```

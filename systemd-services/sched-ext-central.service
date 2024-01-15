@@ -5,6 +5,7 @@ ConditionPathExists=/sys/kernel/debug/sched/ext
 [Service]
 Type=simple
 ExecStart=/usr/bin/scx_central
+Restart=always
 
 [Install]
 WantedBy=multi-user.target

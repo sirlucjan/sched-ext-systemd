@@ -4,7 +4,7 @@ ConditionPathExists=/sys/kernel/debug/sched/ext
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/scx_nest
+ExecStart=/bin/sh -c '/usr/bin/scx_nest 2>&1 | grep -E "warn|error"'
 Restart=always
 
 [Install]

@@ -3,7 +3,7 @@ Description=Start scx_rustland
 ConditionPathExists=/sys/kernel/debug/sched/ext
 
 [Service]
-Type=oneshot
+Type=simple
 ExecStart=/usr/bin/scx_rustland
 
 [Install]

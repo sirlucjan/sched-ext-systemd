@@ -3,7 +3,7 @@ Description=Start scx_pair
 ConditionPathExists=/sys/kernel/debug/sched/ext
 
 [Service]
-Type=oneshot
+Type=simple
 ExecStart=/usr/bin/scx_pair
 
 [Install]

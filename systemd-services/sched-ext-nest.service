@@ -3,7 +3,7 @@ Description=Start scx_nest
 ConditionPathExists=/sys/kernel/debug/sched/ext
 
 [Service]
-Type=oneshot
+Type=simple
 ExecStart=/usr/bin/scx_nest
 
 [Install]

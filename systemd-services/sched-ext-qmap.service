@@ -4,8 +4,9 @@ ConditionPathExists=/sys/kernel/debug/sched/ext
 
 [Service]
 Type=simple
-ExecStart=/bin/sh -c '/usr/bin/scx_qmap 2>&1 | grep -E "warn|error"'
+ExecStart=/usr/bin/scx_qmap
 Restart=always
+StandardOutput=null
 
 [Install]
 WantedBy=multi-user.target

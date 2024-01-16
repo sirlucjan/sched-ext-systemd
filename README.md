@@ -10,10 +10,10 @@ Please put systemd services in the following location:
 
 ### Management of services
 ```
-systemctl enable sched-ext-*.service
+systemctl enable scx_*.service
 ```
 ```
-systemctl start sched-ext-*.service
+systemctl start scx_*.service
 ```
 
 Below is a list of schedulers with their locations:
@@ -34,24 +34,24 @@ Below is a list of schedulers with their locations:
 Replace * with the name of the scheduler, for example.
 
 ```
-systemctl enable sched-ext-nest.service
+systemctl enable scx_nest.service
 ```
 ```
-systemctl start sched-ext-nest.service
+systemctl start scx_nest.service
 ```
 
 You can check the status of the service as follows:
 
 ```
-❯ systemctl status sched-ext-nest
-● sched-ext-nest.service - Start scx_nest
-     Loaded: loaded (/etc/systemd/system/sched-ext-nest.service; enabled; preset: disabled)
+❯ systemctl status scx_nest
+● scx_nest.service - Start scx_nest
+     Loaded: loaded (/etc/systemd/system/scx_nest.service; enabled; preset: disabled)
      Active: active (running) since Mon 2024-01-15 16:25:20 CET; 17s ago
    Main PID: 201559 (scx_nest)
       Tasks: 1 (limit: 37771)
      Memory: 1.4M (peak: 11.7M)
         CPU: 50ms
-     CGroup: /system.slice/sched-ext-nest.service
+     CGroup: /system.slice/scx_nest.service
              └─201559 /usr/bin/scx_nest
 
 sty 15 16:25:20 cachyos systemd[1]: Started Start scx_nest.

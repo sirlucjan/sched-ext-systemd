@@ -1,67 +1,66 @@
-# sched-ext-systemd
+# A Quick Start Guide
 
-### Location of systemd services
+This guide provides instructions for running the SCX schedulers as a systemd service and checking its logs.
 
-Please put systemd services in the following location:
+## Getting Started
 
-```
-/etc/systemd/system/
-```
+At the very beginning, configure the /etc/default/scx file:
 
-### Management of services
-```
-systemctl enable scx_*.service
-```
-```
-systemctl start scx_*.service
-```
+- in the SCX_SCHEDULER variable, select the scheduler you are interested in
 
-Below is a list of schedulers with their locations:
+- in the SCX_FLAGS variable, specify the flags you want to add. To do this, execute and read what flags you can add.
 
 ```
-/usr/bin/scx_simple
-/usr/bin/scx_qmap
-/usr/bin/scx_central
-/usr/bin/scx_pair
-/usr/bin/scx_flatcg
-/usr/bin/scx_userland
-/usr/bin/scx_nest
-/usr/bin/scx_layered
-/usr/bin/scx_rustland
-/usr/bin/scx_rusty
+scx_SCHEDNAME --help
 ```
 
-Replace * with the name of the scheduler, for example.
+To start the SCX scheduler at boot, you need to run the systemd service as root. Here are the steps:
+
+
+- Enable the service:
 
 ```
-systemctl enable scx_nest.service
-```
-```
-systemctl start scx_nest.service
+systemctl enable scx.service
 ```
 
-You can check the status of the service as follows:
+- Start the service:
 
 ```
-❯ systemctl status scx_nest
-● scx_nest.service - Start scx_nest
-     Loaded: loaded (/etc/systemd/system/scx_nest.service; enabled; preset: disabled)
-     Active: active (running) since Mon 2024-01-15 16:25:20 CET; 17s ago
-   Main PID: 201559 (scx_nest)
-      Tasks: 1 (limit: 37771)
-     Memory: 1.4M (peak: 11.7M)
-        CPU: 50ms
-     CGroup: /system.slice/scx_nest.service
-             └─201559 /usr/bin/scx_nest
-
-sty 15 16:25:20 cachyos systemd[1]: Started Start scx_nest.
-
+systemctl start scx.service
 ```
 
-### New enhancement
+Alternatively, you can use a shortened version of these commands:
 
 ```
-ConditionPathExists=/sys/kernel/debug/sched/ext
+systemctl enable --now scx.service
 ```
 
-This will cause that when the user switches to another kernel, there will be no systemctl errors. There will be a short message that the service was not started because the conditions were not met.
+- To check the status of the service, use the following command:
+
+```
+systemctl status scx.service
+```
+
+## Checking Journald Logs
+
+The SCX schedulers do not log to the default journald namspace. Instead, they save logs in a dedicated ```sched-ext``` namespace.
+This is where you should look for information about possible errors.
+
+- To view the logs, use the following command:
+
+```
+journalctl --namespace=sched-ext
+```
+
+- To find logs from another system startup and identify when a potential error might have occurred, use:
+
+```
+journalctl --namespace=sched-ext --list-boots
+```
+
+- To verify the amount of space taken up by the logs, use:
+
+```
+journalctl --namespace=sched-ext --disk-usage
+```
+
